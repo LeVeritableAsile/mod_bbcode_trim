@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension engine="1.0">
+	<id>mod_bbcode_trim</id>
+	<title>Trim bbcode</title>
+	<version>1.0</version>
+	<description>Ensure content inside bbcode is trimed.</description>
+	<author>David Keller</author>
+	<minversion>1.4.4</minversion>
+	<maxtestedon>1.4.4</maxtestedon>
+	<install>
+	</install>
+
+	<hooks>
+		<hook id="ps_preparse_bbcode_start"><![CDATA[
+$text = preg_replace('#(\[[^/\]]+\])\s+#', '\1', $text);
+$text = preg_replace('#\s+(\[/[^\]]+\])#', '\1', $text);
+		]]></hook>
+	</hooks>
+</extension>
